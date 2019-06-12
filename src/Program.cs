@@ -15,14 +15,27 @@ namespace Yaml2Json
     {
         public static async Task Main(string[] args)
         {
-            var result = CliParser.Default.ParseArguments(args, typeof(CliArgs));
-            await result.MapResult<CliArgs, Task>(a => Run(a), e => Task.FromResult(false));
+            try
+            {
+                var result = CliParser.Default.ParseArguments(args, typeof(CliArgs));
+                await result.MapResult<CliArgs, Task>(a => Run(a), e => Task.FromResult(false));
+            }
+            catch (YamlException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
         }
 
         private static async Task Run(CliArgs args)
         {
             if (string.IsNullOrWhiteSpace(args.Target))
-                args.Target = Path.ChangeExtension(args.Source, ".json");
+                args.Target = Path.ChangeExtension(args.Source, ".jsonl");
+
+            long count = 0;
 
             using (var reader = new StreamReader(args.Source))
             using (var writer = new StreamWriter(args.Target))
@@ -35,10 +48,15 @@ namespace Yaml2Json
                     object source = deserializer.Deserialize(parser);
 
                     if (source != null)
+                    {
                         await writer.WriteLineAsync(JsonConvert.SerializeObject(source));
+                        count++;
+                    }
                 }
                 parser.Expect<StreamEnd>();
             }
+
+            Console.WriteLine($"Wrote {count} line(s) to {args.Target}");
         }
     }
 
