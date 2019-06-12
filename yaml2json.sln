@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.28803.452
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "yaml2json", "src\yaml2json.csproj", "{BF592FCA-D471-41CE-B7E5-E34A4A35FD47}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BF592FCA-D471-41CE-B7E5-E34A4A35FD47}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BF592FCA-D471-41CE-B7E5-E34A4A35FD47}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BF592FCA-D471-41CE-B7E5-E34A4A35FD47}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BF592FCA-D471-41CE-B7E5-E34A4A35FD47}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F06313D6-43CC-44D8-8539-4810AD097565}
+	EndGlobalSection
+EndGlobal
